@@ -11,7 +11,7 @@ public class CreateTests
     public async Task ReturnsId()
     {
         var handler = new CreateHandler();
-        var response = await handler.Handle();
+        var response = await handler.HandleAsync();
         var okResponse = (Ok<int>)response;
         okResponse.StatusCode.Should().Be(StatusCodes.Status200OK);
         okResponse.Value.Should().Be(1);

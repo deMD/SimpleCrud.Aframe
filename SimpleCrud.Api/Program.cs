@@ -1,12 +1,13 @@
-using Microsoft.AspNetCore.Mvc;
-using SimpleCrud.Api;
+using MinimalApi.Endpoint.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddEndpoints();
 
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapPost("crud", new CreateHandler().Handle);
+app.MapEndpoints();
 
 app.Run();
