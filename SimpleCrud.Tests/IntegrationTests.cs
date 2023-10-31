@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace SimpleCrud.Tests;
+﻿namespace SimpleCrud.Tests;
 
 [UsesVerify]
 public sealed class IntegrationTests : IClassFixture<SimpleCrudApplicationFactory>
@@ -15,8 +13,8 @@ public sealed class IntegrationTests : IClassFixture<SimpleCrudApplicationFactor
     [Fact]
     public async Task Create()
     {
-        var client = _webApplicationFactory.CreateClient();
-        var response = await client.PostAsync("crud", null);
+        HttpClient client = _webApplicationFactory.CreateClient();
+        HttpResponseMessage response = await client.PostAsync("crud", null);
 
         response.Should().BeSuccessful();
         var content = await response.Content.ReadAsStringAsync();
